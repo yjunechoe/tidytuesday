@@ -52,4 +52,4 @@ anim <- ggplot(plot_data) +
   theme(panel.grid = element_blank()) +
   transition_states(id)
 
-animate(anim, width = 12, height = 9, units = "in", res = 180)
+animate(anim, width = 12, height = 9, units = "in", res = 120)
