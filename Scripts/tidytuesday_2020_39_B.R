@@ -102,3 +102,39 @@ ragg::agg_png(
 )
 plot(p) ; invisible(dev.off())
 magick::image_read(pngfile) #knitr::include_graphics(pngfile)
+
+
+
+
+
+
+
+
+###### Twitter banner ######
+# set.seed(1234)
+# 
+# ggplot() +
+#   pmap(
+#     list(runif(150, 0, 200), abs(rnorm(150, 50, sd = 30)), sample(10, 150, replace = TRUE)),
+#     ~ geom_polygon(aes(x, y, fill = factor(..3)),
+#                    alpha = runif(1, .3, .7),
+#                    make_mountain(
+#                      x_start = ..1 - runif(1, 10, 40),
+#                      x_end = ..1 + runif(1, 10, 40),
+#                      base = 0,
+#                      peak_x = ..1,
+#                      peak_y = ..2,
+#                      n_peaks = sample(3:5, 1),
+#                      peaks_ratio = runif(1, .3, .5),
+#                      side.first = sample(c("left", "right"), 1)
+#                    )
+#     )
+#   ) +
+#   palettetown::scale_fill_poke(pokemon = "articuno") +
+#   theme_void() +
+#   theme(
+#     plot.margin = margin(0, .1, .1, 0, "cm"),
+#     plot.background = element_rect(fill = "#5C606F", color = NA),
+#     panel.grid = element_blank(),
+#     legend.position = 0
+#   ) -> x
