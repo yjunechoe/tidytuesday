@@ -54,8 +54,8 @@ turbine_anim <- wind_turbine %>%
     expand = FALSE,
     clip = "on"
   ) +
-  ggtitle("Canadian Wind Turbines")
-theme_void() +
+  ggtitle("Canadian Wind Turbines") +
+  theme_void() +
   theme(
     plot.title = element_text(family = "Adelle", s),
     plot.margin = margin(1, 1, 1, 1, "cm")
