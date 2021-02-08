@@ -1,3 +1,6 @@
+# Tweet: https://twitter.com/yjunechoe/status/1357769847980007425
+# Making of: 
+
 library(ggplot2)     # CRAN v3.3.3
 library(dplyr)       # CRAN v1.0.4
 library(tidyr)       # CRAN v1.1.2
@@ -492,7 +495,5 @@ animate(
 )
 
 #save
-anim_save(
-  paste0("anim_saves/anim_", str_pad(list.files("anim_saves") %>% str_extract("\\d+") %>% as.numeric() %>% max() + 1, 3, pad = 0), ".gif")
-) 
+anim_save("tidytuesday_2021_06.gif") 
  
