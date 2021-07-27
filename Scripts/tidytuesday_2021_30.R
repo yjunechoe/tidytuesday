@@ -1,4 +1,5 @@
 library(tidyverse)
+library(patchwork)
 library(grid)
 library(ggtext)
 library(gridtext)
@@ -6,10 +7,12 @@ library(gridtext)
 tuesdata <- tidytuesdayR::tt_load(2021, week = 30)
 drought <- tuesdata$drought
 
+others <- c("DC" = "Washington D. C.", "PR" = "Puerto Rico")
+
 drought_agg <- drought %>% 
   filter(state_abb == "CA", drought_lvl != "None") %>% 
   group_by(
-    state = state.name[match(state_abb, state.abb)],
+    state = c(state.name, unname(others))[match(state_abb, c(state.abb, names(others)))],
     year = lubridate::year(valid_start),
     month = lubridate::month(valid_start),
     drought_lvl = fct_rev(fct_inorder(drought_lvl, ordered = TRUE))
@@ -64,7 +67,7 @@ cal_years <- map(
     # strip text styling for drought years
     if (.x %in% c(2007:2009, 2012:2016, 2018, 2020:2021)) {
       p <- p + 
-        theme(plot.title = ggtext::element_markdown(
+        theme(plot.title = element_markdown(
           family = "Roboto Mono",
           face = "bold",
           size = 12,
